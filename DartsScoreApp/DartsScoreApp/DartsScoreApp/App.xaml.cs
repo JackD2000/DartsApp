@@ -10,7 +10,10 @@ namespace DartsScoreApp
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new MainPage())
+            {
+                BarBackgroundColor = Color.ForestGreen,
+            };
         }
 
         protected override void OnStart()

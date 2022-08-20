@@ -1,28 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="DartsScoreApp.MainPage">
+             x:Class="DartsScoreApp.MainPage"
+             NavigationPage.HasNavigationBar="False">
 
     <StackLayout BackgroundColor="Green">
         <Frame BackgroundColor="ForestGreen" Padding="24" CornerRadius="0">
-            <Label Text="Free Darts Scoreboard" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+            <Label Text="Free Darts Scoreboard"
+                   HorizontalTextAlignment="Center"
+                   TextColor="White"
+                   FontSize="36" />
         </Frame>
         <!-- <Label Text="Start developing now" FontSize="Title" Padding="30,10,30,10"/> -->
-        <Button Text="New Game" />
-        <Button Text="Users" />
-        <Button Text="Settings" />
-        <Button Text="Exit" />
-        <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0"/>
-        <Label FontSize="16" Padding="30,24,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Learn more at "/>
-                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
+
+        <Grid VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Text="New Game"
+                    Grid.Row="0"/>
+            <Button Text="Users"
+                    Grid.Row="1"
+                    Clicked="OnUsersButtonClicked" />
+            <Button Text="Settings"
+                    Grid.Row="2" />
+            <Button Text="Exit"
+                    Grid.Row="3" />
+        </Grid>
     </StackLayout>
 
 </ContentPage>

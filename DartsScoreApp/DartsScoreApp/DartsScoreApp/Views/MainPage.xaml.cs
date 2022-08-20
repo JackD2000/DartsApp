@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DartsScoreApp.Views;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -13,6 +14,12 @@ namespace DartsScoreApp
         public MainPage()
         {
             InitializeComponent();
+        }
+
+        // Navigates to user management page
+        async void OnUsersButtonClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new UsersPage());
         }
     }
 }
