@@ -16,5 +16,10 @@ namespace DartsScoreApp.Views
         {
             InitializeComponent();
         }
+
+        private void UserCollection_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

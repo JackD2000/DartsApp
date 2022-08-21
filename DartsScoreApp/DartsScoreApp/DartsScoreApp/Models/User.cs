@@ -9,6 +9,7 @@ namespace DartsScoreApp.Models
     {
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
-        public string Name { get; set; }
+        public string Username { get; set; }
+        public int Wins { get; set; }
     }
 }
