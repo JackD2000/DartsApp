@@ -7,7 +7,7 @@ using DartsScoreApp.Models;
 
 namespace DartsScoreApp.Data
 {
-    internal class UserDb
+    public class UserDb
     {
         readonly SQLiteAsyncConnection db;
 
@@ -24,9 +24,17 @@ namespace DartsScoreApp.Data
         }
 
         // Returns a specific user from ID
+        // or null if no such user exists
         public Task<User> GetUserAsync(int id)
         {
             return db.Table<User>().Where(i => i.ID == id).FirstOrDefaultAsync();
+        }
+
+        // Returns a specific user from username
+        // or null if no such user exists
+        public Task<User> GetUserAsync(string username)
+        {
+            return db.Table<User>().Where(i => i.Username == username).FirstOrDefaultAsync();
         }
 
         // Save a new user to the db

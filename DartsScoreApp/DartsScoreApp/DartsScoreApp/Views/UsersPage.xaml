@@ -4,22 +4,28 @@
              x:Class="DartsScoreApp.Views.UsersPage"
              Title="Users"
              BackgroundColor="Green">
-    
-    <!-- Display list of existing users -->
-    <CollectionView x:Name="UserCollection"
+
+    <StackLayout>
+        <Button Text="Add user"
+            Clicked="OnAddUserButtonClicked"/>
+
+        <!-- Display list of existing users -->
+        <CollectionView x:Name="userCollection"
                     Margin="20"
                     SelectionMode="Single"
                     SelectionChanged="UserCollection_SelectionChanged">
-        <CollectionView.ItemsLayout>
-            <LinearItemsLayout Orientation="Vertical"
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical"
                                ItemSpacing="10"/>
-        </CollectionView.ItemsLayout>
-        <!-- Define appearance of each list item -->
-        <CollectionView.ItemTemplate>
-            <DataTemplate>
-                <Label Text="{Binding Username}"
+            </CollectionView.ItemsLayout>
+            <!-- Define appearance of each list item -->
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Label Text="{Binding Username}"
                        FontSize="Medium"/>
-            </DataTemplate>
-        </CollectionView.ItemTemplate>
-    </CollectionView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+
 </ContentPage>
