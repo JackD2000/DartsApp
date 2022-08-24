@@ -5,11 +5,20 @@ using SQLite;
 
 namespace DartsScoreApp.Models
 {
+    [Table("users")]
     public class User
     {
         [PrimaryKey, AutoIncrement]
-        public int ID { get; set; }
-        public string Username { get; set; }
-        public int Wins { get; set; }
+        [Column("id")]
+        public int Id
+        { get; set; }
+
+        [Column("username")]
+        public string Username
+        { get; set; }
+
+        [Column("wins")]
+        public int Wins
+        { get; set; }
     }
 }

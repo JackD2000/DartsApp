@@ -32,9 +32,14 @@ namespace DartsScoreApp.Views
         {
             string username = await DisplayPromptAsync("New User", "Enter your name:", maxLength: 20);
 
-            if (username != null)
+            // Adds user to db if username is not taken
+            if (username.Length > 0)
             {
-                if (App.UserDatabase.GetUserAsync(username).Result != default(User))
+                var result = await App.UserDatabase.GetUserAsync(username);
+
+                //App.UserDatabase.GetUserAsync(username).Result != default(User)
+
+                if (result != null)
                 {
                     await DisplayAlert("Error", "User with this name already exists!", "Oops...");
                     return;
