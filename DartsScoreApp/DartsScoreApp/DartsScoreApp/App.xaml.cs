@@ -27,7 +27,7 @@ namespace DartsScoreApp
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MainPage())
+            MainPage = new NavigationPage(new MainMenuPage())
             {
                 BarBackgroundColor = Color.ForestGreen,
             };

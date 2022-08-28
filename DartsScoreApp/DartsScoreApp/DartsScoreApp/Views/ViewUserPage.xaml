@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DartsScoreApp.Views.ViewUserPage"
+             Title="User">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="username"
+                Text=""
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"
+                   TextColor="AliceBlue"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

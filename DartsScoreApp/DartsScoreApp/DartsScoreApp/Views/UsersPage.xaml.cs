@@ -42,7 +42,6 @@ namespace DartsScoreApp.Views
                 if (result != null)
                 {
                     await DisplayAlert("Error", "User with this name already exists!", "Oops...");
-                    return;
                 }
                 else
                 {
@@ -52,9 +51,11 @@ namespace DartsScoreApp.Views
             }
         }
 
-        async void UserCollection_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        async void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            // Navigate to user settings/score page with selected user as binding context
+            User user = (User)e.CurrentSelection.FirstOrDefault();
+            await Navigation.PushAsync(new ViewUserPage(user));
         }
     }
 }

@@ -9,9 +9,9 @@ using Xamarin.Forms;
 
 namespace DartsScoreApp
 {
-    public partial class MainPage : ContentPage
+    public partial class MainMenuPage : ContentPage
     {
-        public MainPage()
+        public MainMenuPage()
         {
             InitializeComponent();
         }

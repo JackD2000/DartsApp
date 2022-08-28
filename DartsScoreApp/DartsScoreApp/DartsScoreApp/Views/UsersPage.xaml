@@ -13,7 +13,7 @@
         <CollectionView x:Name="userCollection"
                     Margin="20"
                     SelectionMode="Single"
-                    SelectionChanged="UserCollection_SelectionChanged">
+                    SelectionChanged="OnSelectionChanged">
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout Orientation="Vertical"
                                ItemSpacing="10"/>

@@ -26,41 +26,60 @@ namespace DartsScoreApp.Data
             //return db.Table<User>().ToListAsync();
         }
 
-        // Returns a specific user from ID
-        // or null if no such user exists
+        // Returns a specific user from ID or returns null if no such user exists
         public async Task<User> GetUserAsync(int id)
         {
-            List<User> results = await db.QueryAsync<User>("SELECT * FROM users WHERE id = ?", id.ToString());
-
             try
             {
-                return results[0];
+                User user = (await db.QueryAsync<User>("SELECT * FROM users WHERE id = ?", id.ToString()))[0];
+                return user;
             }
-            catch
+            catch (ArgumentOutOfRangeException)
             {
                 return null;
             }
 
-            // Same query but using LINQ:
+            /*List<User> results = await db.QueryAsync<User>("SELECT * FROM users WHERE id = ?", id.ToString());
+
+            if (results.Count > 0)
+            {
+                return results[0];
+            }
+            else
+            {
+                return null;
+            }*/
+
+            // A simpler query using LINQ:
             //return db.Table<User>().Where(i => i.Id == id).FirstOrDefaultAsync();
         }
 
-        // Returns a specific user from username
-        // or null if no such user exists
+        // Returns a specific user from username or returns null if no such user exists
         public async Task<User> GetUserAsync(string username)
         {
-            List<User> results = await db.QueryAsync<User>("SELECT * FROM users WHERE username = ?", username);
-
             try
             {
-                return results[0];
+                User user = (await db.QueryAsync<User>("SELECT * FROM users WHERE username = ?", username))[0];
+                return user;
             }
-            catch (Exception ex)
+            catch (ArgumentOutOfRangeException)
             {
                 return null;
             }
 
-            // A much simpler query using LINQ:
+            /*
+            List<User> results = await db.QueryAsync<User>("SELECT * FROM users WHERE username = ?", username);
+
+            if (results != null)
+            {
+                return results[0];
+            }
+            else
+            {
+                return null;
+            }*/
+
+            // A simpler query using LINQ:
             //return db.Table<User>().Where(i => i.Username == username).FirstOrDefaultAsync();
         }
 
