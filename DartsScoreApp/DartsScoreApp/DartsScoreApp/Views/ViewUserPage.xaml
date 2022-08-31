@@ -2,11 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DartsScoreApp.Views.ViewUserPage"
-             Title="User">
+             Title="{Binding Username}">
     <ContentPage.Content>
         <StackLayout>
-            <Label x:Name="username"
-                Text=""
+            <Label Text="{Binding Username}"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand"
                    TextColor="AliceBlue"/>
