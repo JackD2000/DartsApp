@@ -89,10 +89,23 @@ namespace DartsScoreApp.Data
                 return db.InsertAsync(user);
         }
 
-        // Delete a user from the db by ID
+        // Delete a user from the db by reference
         public Task<int> DeleteUserAsync(User user)
         {
             return db.DeleteAsync(user);
+        }
+
+        // Delete a user from the db by id
+        public async Task DeleteUserAsync(int id)
+        {
+            try
+            {
+                await db.QueryAsync<User>("DELETE FROM users WHERE id = ?", id);
+            }
+            catch
+            {
+                Console.WriteLine("Failed to delete user, ID = " + id);
+            }
         }
     }
 }

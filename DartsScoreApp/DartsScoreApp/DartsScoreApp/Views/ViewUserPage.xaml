@@ -8,7 +8,12 @@
             <Label Text="{Binding Username}"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand"
-                   TextColor="AliceBlue"/>
+                   TextColor="AliceBlue" />
+            <Button Text="Change username"
+                    Clicked="OnNameChangeClicked" />
+            <Button Text="Delete user"
+                    Clicked="OnDeleteButtonClicked"
+                    BackgroundColor="Red" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
