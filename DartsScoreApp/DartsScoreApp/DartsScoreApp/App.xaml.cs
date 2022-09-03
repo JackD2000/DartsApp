@@ -10,7 +10,7 @@ namespace DartsScoreApp
     {
         static UserDb db;
 
-
+        // Creates database connection as a singleton
         public static UserDb UserDatabase
         {
             get
@@ -23,6 +23,7 @@ namespace DartsScoreApp
             }
         }
 
+        // Creates main page as a NavigationPage
         public App()
         {
             InitializeComponent();

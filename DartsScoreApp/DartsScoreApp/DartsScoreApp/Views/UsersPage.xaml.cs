@@ -37,8 +37,6 @@ namespace DartsScoreApp.Views
             {
                 var result = await App.UserDatabase.GetUserAsync(username);
 
-                //App.UserDatabase.GetUserAsync(username).Result != default(User)
-
                 if (result != null)
                 {
                     await DisplayAlert("Error", "User with this name already exists!", "Oops...");

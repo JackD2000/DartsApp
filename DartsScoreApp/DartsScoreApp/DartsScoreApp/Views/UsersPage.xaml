@@ -6,26 +6,34 @@
              BackgroundColor="Green">
 
     <StackLayout>
-        <Button Text="Add user"
-            Clicked="OnAddUserButtonClicked"/>
+        
 
         <!-- Display list of existing users -->
         <CollectionView x:Name="userCollection"
                     Margin="20"
                     SelectionMode="Single"
-                    SelectionChanged="OnSelectionChanged">
+                    SelectionChanged="OnSelectionChanged"
+                    BackgroundColor="DimGray"
+                    HeightRequest="500">
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout Orientation="Vertical"
-                               ItemSpacing="10"/>
+                                   ItemSpacing="10"/>
             </CollectionView.ItemsLayout>
             <!-- Define appearance of each list item -->
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Label Text="{Binding Username}"
-                       FontSize="Medium"/>
+                           FontSize="Medium"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           Margin="15"
+                           BackgroundColor="Gray"/>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+
+        <Button Text="New user"
+            Clicked="OnAddUserButtonClicked"/>
     </StackLayout>
 
 </ContentPage>

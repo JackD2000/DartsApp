@@ -35,7 +35,7 @@ namespace DartsScoreApp.Views
         }*/
         //public string UserName { get; set; }
 
-        private User user;
+        public User UserContext { get; set; }
 
         // Sets the binding context of the page to a specific user
         public ViewUserPage(User _user)
@@ -43,10 +43,10 @@ namespace DartsScoreApp.Views
             InitializeComponent();
             //username.Text = user.Username;
             //Title = user.Username;
-            user = _user;
+            UserContext = _user;
         }
 
-        async void LoadUser(int id)
+        /*async void LoadUser(int id)
         {
             try
             {
@@ -57,32 +57,40 @@ namespace DartsScoreApp.Views
             {
                 Console.WriteLine("Failed to load user:\n" + ex.Message);
             }
-        }
+        }*/
 
         // Delete selected user and return to previous screen
         private async void OnDeleteButtonClicked(object sender, EventArgs e)
         {
-            try
-            {
-                await App.UserDatabase.DeleteUserAsync(user.Id);
-                await Navigation.PopAsync();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Failed to delete user:\n" + ex.Message);
-                Console.WriteLine(user.Id);
-            }
+            UserContext.DeleteUser();
+            await Navigation.PopAsync();
         }
 
-        private void OnNameChangeClicked(object sender, EventArgs e)
+        // Change a user's name if the name is not already taken
+        private async void OnNameChangeClicked(object sender, EventArgs e)
         {
+            string username = await DisplayPromptAsync("Update User", "Enter new name:", maxLength: 20);
 
+            if (username.Length > 0)
+            {
+                bool changed = await UserContext.UpdateUsername(username);
+
+                if (changed)
+                {
+                    await Navigation.PopAsync();
+                }
+                else
+                {
+                    await DisplayAlert("Error", "Username is already taken.", "Oops...");
+                }
+            }
         }
 
+        // Set page context to selected user on appearing
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            BindingContext = user;
+            BindingContext = UserContext;
         }
     }
 }

@@ -11,6 +11,7 @@ namespace DartsScoreApp.Data
     {
         readonly SQLiteAsyncConnection db;
 
+        // Constructor creates a db at the specified path and opens a connection
         public UserDb(string dbPath)
         {
             db = new SQLiteAsyncConnection(dbPath);
@@ -21,9 +22,6 @@ namespace DartsScoreApp.Data
         public Task<List<User>> GetUsersAsync()
         {
             return db.QueryAsync<User>("SELECT * FROM users");
-
-            // Same query but using LINQ:
-            //return db.Table<User>().ToListAsync();
         }
 
         // Returns a specific user from ID or returns null if no such user exists
@@ -38,20 +36,6 @@ namespace DartsScoreApp.Data
             {
                 return null;
             }
-
-            /*List<User> results = await db.QueryAsync<User>("SELECT * FROM users WHERE id = ?", id.ToString());
-
-            if (results.Count > 0)
-            {
-                return results[0];
-            }
-            else
-            {
-                return null;
-            }*/
-
-            // A simpler query using LINQ:
-            //return db.Table<User>().Where(i => i.Id == id).FirstOrDefaultAsync();
         }
 
         // Returns a specific user from username or returns null if no such user exists
@@ -66,21 +50,6 @@ namespace DartsScoreApp.Data
             {
                 return null;
             }
-
-            /*
-            List<User> results = await db.QueryAsync<User>("SELECT * FROM users WHERE username = ?", username);
-
-            if (results != null)
-            {
-                return results[0];
-            }
-            else
-            {
-                return null;
-            }*/
-
-            // A simpler query using LINQ:
-            //return db.Table<User>().Where(i => i.Username == username).FirstOrDefaultAsync();
         }
 
         // Save a new user to the db
@@ -104,7 +73,20 @@ namespace DartsScoreApp.Data
             }
             catch
             {
-                Console.WriteLine("Failed to delete user, ID = " + id);
+                throw new Exception($"Failed to delete user, ID = {id}");
+            }
+        }
+
+        // Change the username of a user with id and name as args
+        public async Task UpdateUsernameAsync(int id, string username)
+        {
+            try
+            {
+                await db.QueryAsync<User>("UPDATE users SET username = ? WHERE id = ?", username, id);
+            }
+            catch
+            {
+                throw new Exception($"Failed to update username, ID = {id}");
             }
         }
     }

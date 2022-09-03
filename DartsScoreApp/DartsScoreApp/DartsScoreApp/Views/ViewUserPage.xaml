@@ -13,7 +13,7 @@
                     Clicked="OnNameChangeClicked" />
             <Button Text="Delete user"
                     Clicked="OnDeleteButtonClicked"
-                    BackgroundColor="Red" />
+                    BackgroundColor="Red"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
