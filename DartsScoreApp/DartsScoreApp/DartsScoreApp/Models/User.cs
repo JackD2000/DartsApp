@@ -18,9 +18,31 @@ namespace DartsScoreApp.Models
         public string Username
         { get; set; }
 
+        [Column("matches")]
+        public int TotalMatches
+        { get; set; }
+
         [Column("wins")]
         public int Wins
         { get; set; }
+
+        [Column("winPercent")]
+        public double WinPercent
+        { get; set; }
+
+        [Column("dartsThrown")]
+        public int TotalDartsThrown
+        { get; set; }
+
+        [Column("oneDartAvg")]
+        public double OneDartAverage
+        { get; set; }
+
+        [Column("threeDartAvg")]
+        public double ThreeDartAverage
+        { get; set; }
+
+
 
         // Deletes the user from the db
         public async void DeleteUser()

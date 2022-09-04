@@ -5,15 +5,96 @@
              Title="{Binding Username}">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="{Binding Username}"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand"
-                   TextColor="AliceBlue" />
+
+            <Grid VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="Green" Margin="25" Padding="15">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="2.5*"/>
+                    <RowDefinition Height="2.5*"/>
+                    <RowDefinition Height="2.5*"/>
+                    <RowDefinition Height="2.5*"/>
+                    <RowDefinition Height="2.5*"/>
+                </Grid.RowDefinitions>
+
+                <Label Text="{Binding Username}"
+                       Grid.Row="0"
+                       HorizontalTextAlignment="Center"
+                       TextTransform="Uppercase"
+                       FontAttributes="Bold"
+                       FontSize="26"/>
+
+                <Label Grid.Row="2"
+                       HorizontalTextAlignment="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Wins: "/>
+                            <Span Text="{Binding Wins}"
+                                  FontAttributes="Bold"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label Grid.Row="3"
+                       HorizontalTextAlignment="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Matches played: "/>
+                            <Span Text="{Binding TotalMatches}"
+                                  FontAttributes="Bold"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+
+
+                <Label Grid.Row="4"
+                       HorizontalTextAlignment="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Total darts thrown:  "/>
+                            <Span Text="{Binding TotalDartsThrown}"
+                                  FontAttributes="Bold"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label Grid.Row="5"
+                       HorizontalTextAlignment="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Average score (1 dart):  "/>
+                            <Span Text="{Binding OneDartAverage}"
+                                  FontAttributes="Bold"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label Grid.Row="6"
+                       HorizontalTextAlignment="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Average score (3 darts):  "/>
+                            <Span Text="{Binding ThreeDartAverage}"
+                                  FontAttributes="Bold"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </Grid>
+
+
+
             <Button Text="Change username"
                     Clicked="OnNameChangeClicked" />
+            
             <Button Text="Delete user"
                     Clicked="OnDeleteButtonClicked"
                     BackgroundColor="Red"/>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
